@@ -14,7 +14,7 @@
 
 int main()
 {
-	setlocale(LC_ALL, "ukr");
+	setlocale(LC_CTYPE, "ukr");
 	printf("Для сортування пiдрахунком треба вибрати ручний ввiд та вводити числа в дiапазонi вiд 0 до 100\n");
 	int user_auto, repeat, same, sort_type, arr[size], copy[size];
 	do
