@@ -15,7 +15,7 @@
 int main()
 {
 	setlocale(LC_ALL, "ukr");
-	printf("Для сортування пiдрахунком треба вибрати ручний ввiд та вводити числа в дiапазонi вiд 0 до 100\n");
+	printf("Для сортування пiдрахунком n: ручний ввiд >= 0 && < 100000\nДля сортування за розрядами : ручний ввiд >= 0\n");
 	int user_auto, repeat, same, sort_type, arr[size], copy[size];
 	do
 	{
@@ -44,7 +44,8 @@ int main()
 			arr_print(copy);
 			break;
 		case 3:
-			printf("\nВiдсортованний масив:\n");
+			printf("\nМасив вiдсортований пiдрахунком за розрядами:\n");
+			radixSort(copy);
 			arr_print(copy);
 			break;
 		default:

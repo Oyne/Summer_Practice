@@ -15,7 +15,7 @@
 
 //Кількість елементів масиву
 #define size 10
-
+#define counting_size 100000
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
@@ -32,6 +32,7 @@ PUBLIC void arr_copy(int arr[], int copy[]);
 PUBLIC void mergeSort(int arr[], int l, int r);
 /*Функція сортування підрахунком*/
 PUBLIC void countingSort(int arr[]);
-
+/*Функція сортування за розрядом*/
+PUBLIC void radixSort(int arr[]);
 
 #endif 
