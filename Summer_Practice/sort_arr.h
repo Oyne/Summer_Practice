@@ -16,6 +16,7 @@
 //Кількість елементів масиву
 #define size 10
 #define counting_size 100000
+
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>

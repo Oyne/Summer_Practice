@@ -14,12 +14,12 @@
 
 int main()
 {
-	setlocale(LC_ALL, "ukr");
-	printf("Для сортування пiдрахунком n: ручний ввiд >= 0 && < 100000\nДля сортування за розрядами : ручний ввiд >= 0\n");
+	setlocale(LC_ALL, "ukr", ".UTF8");
+	printf("Для сортування пiдрахунком : ручний ввiд >= 0 && < 100000\nДля сортування за розрядами : ручний ввiд >= 0\n");
 	int user_auto, repeat, same, sort_type, arr[size], copy[size];
 	do
 	{
-	printf("Бажаєте ввести масив самi чи автоматично?\nСамi - 1 | Автоматично - 0 : ");
+	printf("\nБажаєте ввести масив самi чи автоматично?\nСамi - 1 | Автоматично - 0 : ");
 	scanf_s("%d", &user_auto);
 	if (user_auto) person_input(arr);
 	else random_input(arr);

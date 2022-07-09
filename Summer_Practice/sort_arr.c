@@ -17,7 +17,8 @@ PRIVATE void merge(int arr[], int l, int m, int r)
 	int n2 = r - m;
 
 	//Створюємо тимчасові масиви
-	int* L = malloc(n1 * sizeof(int)), * R = malloc(n2 * sizeof(int));
+	int* L = (int*)calloc(n1, sizeof(int));
+	int* R = (int*)calloc(n2, sizeof(int));
 
 	//Копіюємо значення до них
 	for (i = 0; i < n1; i++)
@@ -62,7 +63,8 @@ PRIVATE void merge(int arr[], int l, int m, int r)
 }
 
 //Функкція для знаходження максимального елементу масиву
-PRIVATE int getMax(int arr[]) {
+PRIVATE int getMax(int arr[]) 
+{
 	int max = arr[0];
 	for (int i = 1; i < size; i++)
 		if (arr[i] > max)
@@ -195,3 +197,4 @@ PUBLIC void radixSort(int arr[]) {
 	for (int place = 1; max / place > 0; place *= 10)
 		counting_radixSort(arr, place);
 }
+
