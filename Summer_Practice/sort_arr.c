@@ -189,7 +189,8 @@ PUBLIC void countingSort(int arr[])
 	}
 }
 
-PUBLIC void radixSort(int arr[]) {
+PUBLIC void radixSort(int arr[]) 
+{
 	//Знаходимо максимальний елемент
 	int max = getMax(arr);
 

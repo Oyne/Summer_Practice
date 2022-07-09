@@ -29,6 +29,7 @@ TEST(getMax_test, performance)
 	EXPECT_EQ(max2, getMax(test2));
 	EXPECT_EQ(max3, getMax(test3));
 }
+
 TEST(mergeSort_test, performance)
 {
 	//Тест 1
