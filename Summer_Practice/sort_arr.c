@@ -9,7 +9,7 @@
 
 #include "sort_arr.h"
 
-//Функція для об'єднання масивів при сортвуанні злиттям
+//Функція для об'єднання масивів при сортуванні злиттям
 PRIVATE void merge(int arr[], int l, int m, int r)
 {
 	int i, j, k;
@@ -62,7 +62,7 @@ PRIVATE void merge(int arr[], int l, int m, int r)
 	}
 }
 
-//Функкція для знаходження максимального елементу масиву
+//Функція для знаходження максимального елементу масиву
 PRIVATE int getMax(int arr[]) 
 {
 	int max = arr[0];
@@ -72,7 +72,7 @@ PRIVATE int getMax(int arr[])
 	return max;
 }
 
-//Завдяки сортуванню підрахунком для сортування за розрядом
+//Функція сортуванню підрахунком для сортування за розрядом
 PRIVATE void counting_radixSort(int arr[], int place)
 {
 	int output[size];
