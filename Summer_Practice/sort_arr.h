@@ -25,7 +25,7 @@
 PUBLIC void person_input(int arr[]);
 /*Функція для заповнення масиву автоматично*/
 PUBLIC void random_input(int arr[]);
-/*Функція для виводиу масиву*/
+/*Функція для виводу масиву*/
 PUBLIC void arr_print(int arr[]);
 /*Функція для копіювання вхідного масиву*/
 PUBLIC void arr_copy(int arr[], int copy[]);
