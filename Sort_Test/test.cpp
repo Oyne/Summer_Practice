@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "..\Summer_Practice\sort_arr.c"
 
 //Function that compares two array on identity
