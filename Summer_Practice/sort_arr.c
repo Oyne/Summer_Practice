@@ -151,7 +151,6 @@ PUBLIC void arr_copy(int arr[], int copy[], unsigned int element_num)
 		copy[i] = arr[i];
 }
 
-
 PUBLIC void mergeSort(int arr[], int l, int r)
 {
 	if (l < r)
@@ -191,15 +190,15 @@ PUBLIC void countingSort(int arr[], unsigned int element_num)
 			count[i] += count[i - 1];
 
 		//Поміщаємо елементи в відсортованому порядку
-		for (int i = size - 1; i >= 0; i--) {
+		for (int i = size - 1; i >= 0; i--) 
+		{
 			output[count[arr[i]] - 1] = arr[i];
 			count[arr[i]]--;
 		}
 
 		//Заносимо скопійовані значення до головного масиву
-		for (int i = 0; i < element_num; i++) {
+		for (int i = 0; i < element_num; i++)
 			arr[i] = output[i];
-		}
 	}
 	else
 	{
@@ -226,4 +225,3 @@ PUBLIC void radixSort(int arr[], unsigned int element_num)
 		exit(negative);
 	}
 }
-
