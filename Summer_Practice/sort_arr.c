@@ -151,6 +151,7 @@ PUBLIC void arr_copy(int arr[], int copy[], unsigned int element_num)
 		copy[i] = arr[i];
 }
 
+
 PUBLIC void mergeSort(int arr[], int l, int r)
 {
 	if (l < r)
