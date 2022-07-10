@@ -1,4 +1,13 @@
-﻿#include "pch.h"
+﻿/**
+* @file test.cpp
+* @author Лiтвiнов А.А, гр. 515-В
+* @date 8 липня	 2022
+* @brief Навчальна практика.
+*
+* 22 Варiант - Алгоритми сортування масивiв
+*/
+
+#include "pch.h"
 #include "..\Summer_Practice\sort_arr.c"
 
 //Функція яка перевіряє два масива на ідентичність
