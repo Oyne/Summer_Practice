@@ -15,25 +15,27 @@
 
 //Кількість елементів масиву
 #define size 10
-#define counting_size 100000
+
+//Код помилки при негативному елементі при сортуванні підрахунком та за розрядом
+#define negative -1
 
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
 
 /*Функція для заповнення масиву користувачем*/
-PUBLIC void person_input(int arr[]);
+PUBLIC void person_input(int arr[], unsigned int element_num);
 /*Функція для заповнення масиву автоматично*/
-PUBLIC void random_input(int arr[]);
+PUBLIC void random_input(int arr[], unsigned int element_num);
 /*Функція для виводу масиву*/
-PUBLIC void arr_print(int arr[]);
+PUBLIC void arr_print(int arr[], unsigned int element_num);
 /*Функція для копіювання вхідного масиву*/
-PUBLIC void arr_copy(int arr[], int copy[]);
+PUBLIC void arr_copy(int arr[], int copy[], unsigned int element_num);
 /*Функція сортування злиттям*/
 PUBLIC void mergeSort(int arr[], int l, int r);
 /*Функція сортування підрахунком*/
-PUBLIC void countingSort(int arr[]);
+PUBLIC void countingSort(int arr[], unsigned int element_num);
 /*Функція сортування за розрядом*/
-PUBLIC void radixSort(int arr[]);
+PUBLIC void radixSort(int arr[], unsigned int element_num);
 
 #endif 

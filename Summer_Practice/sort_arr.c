@@ -63,31 +63,35 @@ PRIVATE void merge(int arr[], int l, int m, int r)
 }
 
 //Функція для знаходження максимального елементу масиву
-PRIVATE int getMax(int arr[]) 
+PRIVATE int getMax(int arr[], unsigned int element_num)
 {
 	int max = arr[0];
-	for (int i = 1; i < size; i++)
+	for (int i = 1; i < element_num; i++)
 		if (arr[i] > max)
 			max = arr[i];
 	return max;
 }
 
 //Функція сортуванню підрахунком для сортування за розрядом
-PRIVATE void counting_radixSort(int arr[], int place)
+PRIVATE void counting_radixSort(int arr[], int place, unsigned int element_num)
 {
-	int output[size];
+	int* output = (int*)calloc(element_num, sizeof(int));
 	int max = (arr[0] / place) % 10;
 
 	//Знаходимо найбільшие число
-	for (int i = 1; i < size; i++)
+	for (int i = 1; i < element_num; i++)
 	{
 		if (((arr[i] / place) % 10) > max)
 			max = arr[i];
 	}
-	int count[size] = { 0 };
+
+	int* count = (int*)calloc(max + 1, sizeof(int));
+
+	for (int i = 0; i < max; i++)
+		count[i] = 0;
 
 	//В циклі рахуємо кількість чисел
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < element_num; i++)
 		count[(arr[i] / place) % 10]++;
 
 	//Обчислюємо кумулятивну кількість
@@ -95,52 +99,56 @@ PRIVATE void counting_radixSort(int arr[], int place)
 		count[i] += count[i - 1];
 
 	//Поміщаємо елементи в відсортованому порядку
-	for (int i = size - 1; i >= 0; i--)
+	for (int i = element_num - 1; i >= 0; i--)
 	{
 		output[count[(arr[i] / place) % 10] - 1] = arr[i];
 		count[(arr[i] / place) % 10]--;
 	}
 
 	//Заносимо скопійовані значення до головного масиву
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < element_num; i++)
 		arr[i] = output[i];
 }
 
-PUBLIC void person_input(int arr[])
+//Функція яка знаходить чи є негативний елемент в масиві, для сортування підрахунком та за розрядом
+PRIVATE int negative_found(int arr[], unsigned int element_num)
 {
-		for (int i = 0; i < size; i++)
-		{
-			printf("Введiть arr[%d] = ", i);
-			scanf_s("%d", &arr[i]);
-		}
-		return;
-} 
-
-PUBLIC void random_input(int arr[])
-{
-		srand(time(NULL));
-		for (int i = 0; i < size; i++)
-		{
-			arr[i] = rand() % 201 - 100;
-		}
-		return;
+	for (int i = 0; i < element_num; i++)
+		if (arr[i] < 0) return 0;
+	return 1;
 }
 
-PUBLIC void arr_print(int arr[])
+PUBLIC void person_input(int arr[], unsigned int element_num)
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < element_num; i++)
+	{
+		printf("Введiть arr[%d] = ", i);
+		scanf_s("%d", &arr[i]);
+	}
+	return;
+}
+
+PUBLIC void random_input(int arr[], unsigned int element_num)
+{
+	srand(time(NULL));
+	for (int i = 0; i < element_num; i++)
+		arr[i] = rand() % 201 - 100;
+	return;
+}
+
+PUBLIC void arr_print(int arr[], unsigned int element_num)
+{
+	for (int i = 0; i < element_num; i++)
 	{
 		printf("arr[%d] = %d\n", i, arr[i]);
 	}
 	return;
 }
 
-PUBLIC void arr_copy(int arr[], int copy[])
+PUBLIC void arr_copy(int arr[], int copy[], unsigned int element_num)
 {
-	for (int i = 0; i < size; i++)
-	{
+	for (int i = 0; i < element_num; i++)
 		copy[i] = arr[i];
-	}
 }
 
 PUBLIC void mergeSort(int arr[], int l, int r)
@@ -159,43 +167,62 @@ PUBLIC void mergeSort(int arr[], int l, int r)
 	}
 }
 
-PUBLIC void countingSort(int arr[])
+PUBLIC void countingSort(int arr[], unsigned int element_num)
 {
+	if (negative_found(arr, element_num))
+	{
+		int* output = (int*)calloc(element_num, sizeof(int));
 
-	int output[size];
+		//Знаходимо найбільший елемент масиву
+		int max = getMax(arr, element_num);
 
-	//Знаходимо найбільший елемент масиву
-	int max = getMax(arr);
+		int* count = (int*)calloc(max + 1, sizeof(int));
 
-	int count[counting_size] = { 0 };
+		for (int i = 0; i < max; i++)
+			count[i] = 0;
 
-	//Зберігаємо кількість кожного числа
-	for (int i = 0; i < size; i++) 
-		count[arr[i]]++;
-	
-	//Обчислюємо кумулятивну кількість
-	for (int i = 1; i <= max; i++)
-		count[i] += count[i - 1];
-	
-	//Поміщаємо елементи в відсортованому порядку
-	for (int i = size - 1; i >= 0; i--) {
-		output[count[arr[i]] - 1] = arr[i];
-		count[arr[i]]--;
+		//Зберігаємо кількість кожного числа
+		for (int i = 0; i < element_num; i++)
+			count[arr[i]]++;
+
+		//Обчислюємо кумулятивну кількість
+		for (int i = 1; i <= max; i++)
+			count[i] += count[i - 1];
+
+		//Поміщаємо елементи в відсортованому порядку
+		for (int i = size - 1; i >= 0; i--) {
+			output[count[arr[i]] - 1] = arr[i];
+			count[arr[i]]--;
+		}
+
+		//Заносимо скопійовані значення до головного масиву
+		for (int i = 0; i < element_num; i++) {
+			arr[i] = output[i];
+		}
 	}
-
-	//Заносимо скопійовані значення до головного масиву
-	for (int i = 0; i < size; i++) {
-		arr[i] = output[i];
+	else
+	{
+		printf("\nВи ввели негативне значення яке неприпустиме для цього алгоритму сортування");
+		exit(negative);
 	}
 }
 
-PUBLIC void radixSort(int arr[]) 
+PUBLIC void radixSort(int arr[], unsigned int element_num)
 {
-	//Знаходимо максимальний елемент
-	int max = getMax(arr);
+	if (negative_found(arr, element_num))
+	{
+		//Знаходимо максимальний елемент
+		int max = getMax(arr, element_num);
 
-	//Застосовуємо сортировку підрахунком по місцям
-	for (int place = 1; max / place > 0; place *= 10)
-		counting_radixSort(arr, place);
+		//Застосовуємо сортировку підрахунком по місцям
+		for (int place = 1; max / place > 0; place *= 10)
+			counting_radixSort(arr, place, element_num);
+
+	}
+	else
+	{
+		printf("\nВи ввели негативне значення яке неприпустиме для цього алгоритму сортування");
+		exit(negative);
+	}
 }
 
