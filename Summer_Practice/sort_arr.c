@@ -168,7 +168,7 @@ PUBLIC void mergeSort(int arr[], int l, int r)
 }
 
 PUBLIC void countingSort(int arr[], unsigned int element_num)
-{
+{	
 	if (negative_found(arr, element_num))
 	{
 		int* output = (int*)calloc(element_num, sizeof(int));
@@ -190,7 +190,7 @@ PUBLIC void countingSort(int arr[], unsigned int element_num)
 			count[i] += count[i - 1];
 
 		//Поміщаємо елементи в відсортованому порядку
-		for (int i = size - 1; i >= 0; i--) 
+		for (int i = element_num - 1; i >= 0; i--)
 		{
 			output[count[arr[i]] - 1] = arr[i];
 			count[arr[i]]--;
@@ -216,8 +216,7 @@ PUBLIC void radixSort(int arr[], unsigned int element_num)
 
 		//Застосовуємо сортировку підрахунком по місцям
 		for (int place = 1; max / place > 0; place *= 10)
-			counting_radixSort(arr, place, element_num);
-
+			counting_radixSort(arr, place, element_num); 
 	}
 	else
 	{
